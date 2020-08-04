@@ -1,0 +1,1456 @@
+from typing import List
+
+
+def set():
+
+    print('''        1 : play
+
+        0 : exit
+             ''')
+    n = int(input(" "))
+    if n == 1:
+        print("Hello all")
+        print('''
+            WELCOME TO THE PYTHON SET GAME
+            0 0 0
+            0 0 0
+            0 0 0
+            THIS IS A INITIAL SET
+            THIS GAME CAN BE TAKEN OVER BY A PLAYER
+            BY RECTIFING 3 DIGITS OF THE PLAYER LINEARLY IN ANY DIRECTION
+            1 2 3  0 0 0 
+            4 5 6  0 0 0
+            7 8 9  0 0 0
+            HERE UR INPUT IS JUST THE POSITION OF UR MOVE
+            ''')
+    elif n == 0:
+        exit(0)
+    else:
+        print("wrong choice")
+    b = 7
+    a: List[List[int]] = [
+        [b, b, b],
+        [b, b, b],
+        [b, b, b]
+    ]
+    i = 0
+    while True:
+
+        def win():
+            if a[0][0] == a[1][1] == a[2][2] == 0:
+                print("Player 2 Wins")
+                set()
+            elif a[0][0] == a[1][1] == a[2][2] == 1:
+                print("Player 1 Wins")
+                set()
+            elif a[0][0] == a[0][1] == a[0][2] == 0:
+                print("Player 2 Wins")
+                set()
+            elif a[0][0] == a[0][1] == a[0][2] == 1:
+                print("Player 1 Wins")
+                set()
+            elif a[1][0] == a[1][1] == a[1][2] == 0:
+                print("Player 2 Wins")
+                set()
+            elif a[1][0] == a[1][1] == a[1][2] == 1:
+                print("Player 1 Wins")
+                set()
+            elif a[2][0] == a[2][1] == a[2][2] == 0:
+                print("Player 2 Wins")
+                set()
+            elif a[2][0] == a[2][1] == a[2][2] == 1:
+                print("Player 1 Wins")
+                set()
+            elif a[0][0] == a[1][0] == a[2][0] == 0:
+                print("Player 2 Wins")
+                set()
+            elif a[0][0] == a[1][0] == a[2][0] == 1:
+                print("Player 1 Wins")
+                set()
+            elif a[0][1] == a[1][1] == a[2][1] == 0:
+                print("Player 2 Wins")
+                set()
+            elif a[0][1] == a[1][1] == a[2][1] == 1:
+                print("Player 1 Wins")
+                set()
+            elif a[0][2] == a[1][2] == a[2][2] == 0:
+                print("Player 2 Wins")
+                set()
+            elif a[0][2] == a[1][2] == a[2][2] == 1:
+                print("Player 1 Wins")
+                set()
+            elif a[0][2] == a[1][1] == a[2][0] == 0:
+                print("Player 2 Wins")
+                set()
+            elif a[0][2] == a[1][1] == a[2][0] == 1:
+                print("Player 1 Wins")
+                set()
+            else:
+                print("next move pls")
+
+        def disp():
+
+            print(f'''
+                     1 2 3              {a[0][0]} {a[0][1]} {a[0][2]}
+                     4 5 6              {a[1][0]} {a[1][1]} {a[1][2]}
+                     7 8 9              {a[2][0]} {a[2][1]} {a[2][2]}
+                                   ''')
+
+        if i == 3:
+            print('''               New Moves BEGINS 
+            
+                                    @___@___@ 
+                                    |\  |  /|
+                                    | \ | / |
+                                    |  \|/  |
+                                    @---@---@
+                                    |  /|\  |
+                                    | / | \ |
+                                    |/  |  \|
+                                    @___@___@
+                                          
+             
+                ************************NOTE************************
+                Kindly do not make any of the wrong moves
+                Like placing the coin over the other player coin or on your own coin itself
+                Every move must reach to the neighbouring vertices without overriding
+                Length of the move is ALWAYS 1
+                
+                
+                IF YOU BREAK THE RULES THEN YOU HAVE TO PLAY FROM THE BEGINNING   
+                
+                
+                YOU JUST HAVE TO MOVE YOUR COIN ALONG THE EDGES WHICH ARE NOT OVERCOMING 
+                ANY OF THE COIN EXCEPT THE JUNK {7}
+                
+                THANK YOU.. 
+                            LETS' GET STARTED--------->>>>>
+                ''')
+
+            def pro1():
+                p = int(input('''PLAYER 1: enter the place to replace ur coin (1) ::
+
+                                               ENTER OLD LOCATION:: '''))
+
+                def old1():
+
+                    if p == 1:
+                        if a[0][0] == 0:
+                            flag = 1
+                            print("Player 2  is present")
+                            pro1()
+                        elif a[0][0] == 7:
+                            print("Junk is present")
+                            pro1()
+                        elif a[0][1] == 0 or a[0][1] == 1:
+                            c = 1
+                            print("only  moves available are 5 4")
+                        else:
+                            print("Available moves are 2 5 4")
+
+                    elif p == 2:
+                        if a[0][1] == 0 or a[0][1] == 7:
+                            print("player or a junk is present")
+                            pro1()
+                        else:
+                            print("Available moves are 1 5 3")
+
+                    elif p == 3:
+                        if a[0][2] == 0 or a[0][2] == 7:
+                            print("player or a junk is present")
+                            pro1()
+                        else:
+                            print("Available moves are 2 5 6")
+
+                    elif p == 4:
+                        if a[1][0] == 0 or a[1][0] == 7:
+                            print("player or a junk is present")
+                            pro1()
+                        else:
+                            print("Available moves are 1 5 7")
+
+                    elif p == 5:
+                        if a[1][1] == 0 or a[1][1] == 7:
+                            print("player or a junk is present")
+                            pro1()
+                        else:
+                            print("Available moves are 1 2 3 4 6 7 8 9")
+
+                    elif p == 6:
+                        if a[1][2] == 0 or a[1][2] == 7:
+                            print("player or a junk is present")
+                            pro1()
+                        else:
+                            print("Available moves are 3 5 9")
+
+
+                    elif p == 7:
+                        if a[2][0] == 0 or a[2][0] == 7:
+                            print("player or a junk is present")
+                            pro1()
+                        else:
+                            print("Available moves are 4 5 8")
+
+                    elif p == 8:
+                        if a[2][1] == 0 or a[2][1] == 7:
+                            print("player or a junk is present")
+                            pro1()
+                        else:
+                            print("Available moves are 7 5 9")
+
+                    elif p == 9:
+                        if a[2][2] == 0 or a[2][2] == 7:
+                            print("player or a junk is present")
+                            pro1()
+                        else:
+                            print("Available moves are 6 5 8")
+                    elif p<=0 or p>9:
+                        print("wrong move nigga ")
+                        pro1()
+                    else:
+                        print('wrong move')
+                        old1()
+
+                old1()
+
+                def rgame1():
+
+                    p1 = int(input("PLAYER 1: enter the place to place ur coin (1) "))
+                    if p == 1:
+                        if p1 == 1:
+                            if a[0][0] == 0:
+                                flag = 1
+                                print("player2 is present")
+                                pro1()
+                            elif a[0][0] == 1:
+                                flag = 1
+                                print("your coin present")
+                                pro1()
+                            else:
+                                flag = 1
+                                a[0][0] = 1
+                        elif p1 == 2:
+                            if a[0][1] == 0:
+                                flag = 1
+                                print("player2 is present")
+                                pro1()
+                            elif a[0][1] == 1:
+                                flag = 1
+                                print("your coin present")
+                                pro1()
+                            else:
+                                flag = 1
+                                a[0][1] = 1
+                                a[0][0] = 7
+                        elif p1 == 4:
+                            if a[1][0] == 0:
+                                flag = 1
+                                print("player2 is present")
+                                pro1()
+                            elif a[1][0] == 1:
+                                flag = 1
+                                print("your coin present")
+                                pro1()
+                            else:
+                                flag = 1
+                                a[1][0] = 1
+                                a[0][0] = 7
+                        elif p1 == 5:
+                            if a[1][1] == 0:
+                                flag = 1
+                                print("player2 is present")
+                                pro1()
+                            elif a[1][1] == 1:
+                                flag = 1
+                                print("your coin present")
+                                pro1()
+                            else:
+                                flag = 1
+                                a[1][1] = 1
+                                a[0][0] = 7
+                        else:
+                            flag = 1
+                            print("wrong move")
+                            pro1()
+
+                    elif p == 2:
+                        if p1 == 1:
+                            if a[0][0] == 0:
+                                flag = 1
+                                print("player2 is present")
+                                pro1()
+                            elif a[0][0] == 1:
+                                flag = 1
+                                print("your coin present")
+                                pro1()
+                            else:
+                                flag = 1
+                                a[0][0] = 1
+                                a[0][1] = 7
+                        elif p1 == 2:
+                            if a[0][1] == 0:
+                                flag = 1
+                                print("player2 is present")
+                                pro1()
+                            elif a[0][1] == 1:
+                                flag = 1
+                                print("your coin present")
+                                pro1()
+                            else:
+                                flag = 1
+                                a[0][1] = 1
+                        elif p1 == 3:
+                            if a[0][2] == 0:
+                                flag = 1
+                                print("player2 is present")
+                                pro1()
+                            elif a[0][2] == 1:
+                                flag = 1
+                                print("your coin present")
+                                pro1()
+                            else:
+                                flag = 1
+                                a[0][2] = 1
+                                a[0][1] = 7
+                        elif p1 == 5:
+                            if a[1][1] == 0:
+                                flag = 1
+                                print("player2 is present")
+                                pro1()
+                            elif a[1][1] == 1:
+                                flag = 1
+                                print("your coin present")
+                                pro1()
+                            else:
+                                flag = 1
+                                a[1][1] = 1
+                                a[0][1] = 7
+                        else:
+                            flag = 1
+                            print("wrong move")
+                            pro1()
+
+                    elif p == 3:
+                        if p1 == 2:
+                            if a[0][1] == 0:
+                                flag = 1
+                                print("player2 is present")
+                                pro1()
+                            elif a[0][1] == 1:
+                                flag = 1
+                                print("your coin present")
+                                pro1()
+                            else:
+                                flag = 1
+                                a[0][1] = 1
+                                a[0][2] = 7
+                        elif p1 == 3:
+                            if a[0][2] == 0:
+                                flag = 1
+                                print("player2 is present")
+                                pro1()
+                            elif a[0][2] == 1:
+                                flag = 1
+                                print("your coin present")
+                                pro1()
+                            else:
+                                flag = 1
+                                a[0][2] = 1
+                        elif p1 == 5:
+                            if a[1][1] == 0:
+                                flag = 1
+                                print("player2 is present")
+                                pro1()
+                            elif a[1][1] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[1][1] = 1
+                                a[0][2] = 7
+                        elif p1 == 6:
+                            if a[1][2] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[1][2] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[1][2] = 1
+                                a[0][2] = 7
+                        else:
+                            print("wrong move")
+                            pro1()
+
+                    elif p == 4:
+                        if p1 == 1:
+                            if a[0][0] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[0][0] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[0][0] = 1
+                                a[1][0] = 7
+                        elif p1 == 4:
+                            if a[1][0] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[1][0] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[1][0] = 1
+                        elif p1 == 5:
+                            if a[1][1] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[1][1] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[1][1] = 1
+                                a[1][0] = 7
+                        elif p1 == 7:
+                            if a[2][0] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[2][0] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[2][0] = 1
+                                a[1][0] = 7
+                        else:
+                            print("wrong move")
+                            pro1()
+
+                    elif p == 5:
+                        if p1 == 1:
+                            if a[0][0] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[0][0] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[0][0] = 1
+                                a[1][1] = 7
+                        elif p1 == 2:
+                            if a[0][1] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[0][1] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[0][1] = 1
+                                a[1][1] = 7
+                        elif p1 == 3:
+                            if a[0][2] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[0][2] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[0][2] = 1
+                                a[1][1] = 7
+                        elif p1 == 4:
+                            if a[1][0] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[1][0] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[1][0] = 1
+                                a[1][1] = 7
+                        elif p1 == 5:
+                            if a[1][1] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[1][1] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[1][1] = 1
+                        elif p1 == 6:
+                            if a[1][2] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[1][2] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[1][2] = 1
+                                a[1][1] = 7
+                        elif p1 == 7:
+                            if a[2][0] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[2][0] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[2][0] = 1
+                                a[1][1] = 7
+                        elif p1 == 8:
+                            if a[2][1] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[2][1] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[2][1] = 1
+                                a[1][1] = 7
+                        elif p1 == 9:
+                            if a[2][2] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[2][2] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[2][2] = 1
+                                a[1][1] = 7
+                        else:
+                            print("wrong move")
+                            pro1()
+
+                    elif p == 6:
+                        if p1 == 3:
+                            if a[0][2] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[0][2] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[0][2] = 1
+                                a[1][2] = 7
+                        elif p1 == 5:
+                            if a[1][1] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[1][1] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[1][1] = 1
+                                a[1][2] = 7
+                        elif p1 == 6:
+                            if a[1][2] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[1][2] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[1][2] = 1
+                        elif p1 == 9:
+                            if a[2][2] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[2][2] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[2][2] = 1
+                                a[1][2] = 7
+                        else:
+                            print("wrong move")
+                            pro1()
+
+                    elif p == 7:
+                        if p1 == 4:
+                            if a[1][0] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[1][0] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[1][0] = 1
+                                a[2][0] = 7
+                        elif p1 == 5:
+                            if a[1][1] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[1][1] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[1][1] = 1
+                                a[2][0] = 7
+                        elif p1 == 7:
+                            if a[2][0] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[2][0] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[2][0] = 1
+                        elif p1 == 8:
+                            if a[2][1] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[2][1] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[2][1] = 1
+                                a[2][0] = 7
+                        else:
+                            print("wrong move")
+                            pro1()
+
+                    elif p == 8:
+                        if p1 == 5:
+                            if a[1][1] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[1][1] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[1][1] = 1
+                                a[2][1] = 7
+                        elif p1 == 7:
+                            if a[2][0] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[2][0] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[2][0] = 1
+                                a[2][1] = 7
+                        elif p1 == 8:
+                            if a[2][1] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[2][1] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[2][1] = 1
+                        elif p1 == 9:
+                            if a[2][2] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[2][2] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[2][2] = 1
+                                a[2][1] = 7
+                        else:
+                            print("wrong move")
+                            pro1()
+
+                    elif p == 9:
+                        if p1 == 5:
+                            if a[1][1] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[1][1] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[1][1] = 1
+                                a[2][2] = 7
+                        elif p1 == 6:
+                            if a[1][2] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[1][2] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[1][2] = 1
+                                a[2][2] = 7
+                        elif p1 == 8:
+                            if a[2][1] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[2][1] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[2][1] = 1
+                                a[2][2] = 7
+                        elif p1 == 9:
+                            if a[2][2] == 0:
+                                print("player2 is present")
+                                pro1()
+                            elif a[2][2] == 1:
+                                print("your coin present")
+                                pro1()
+                            else:
+                                a[2][2] = 1
+                        else:
+                            print("wrong move")
+                            pro1()
+                    elif p1<=0 or p1>6:
+                        print("wrong move nigga ")
+                        pro1()
+                    else:
+                        print(" wrong move")
+                        pro1()
+
+                rgame1()
+
+            def pro2():
+                p = int(input('''PLAYER 2: enter the place to replace ur coin (0) ::
+                                               ENTER OLD LOCATION:: '''))
+
+                def old2():
+
+                    if p == 1:
+                        if a[0][0] == 1 or a[0][0] == 7:
+                            print("player or a junk is present")
+                            pro2()
+                        else:
+                            print("Available moves are 2 5 4")
+
+
+                    elif p == 2:
+                        if a[0][1] == 1 or a[0][1] == 7:
+                            print("player or a junk is present")
+                            pro2()
+                        else:
+                            print("Available moves are 1 5 3")
+                            
+                    elif p == 3:
+                        if a[0][2] == 1 or a[0][2] == 7:
+                            print("player or a junk is present")
+                            pro2()
+                        else:
+                            print("Available moves are 2 5 6")
+                            
+                    elif p == 4:
+                        if a[1][0] == 1 or a[1][0] == 7:
+                            print("player or a junk is present")
+                            pro2()
+                        else:
+                            print("Available moves are 1 5 7")
+                            
+                    elif p == 5:
+                        if a[1][1] == 1 or a[1][1] == 7:
+                            print("player or a junk is present")
+                            pro2()
+                        else:
+                            print("Available moves are 1 2 3 4 6 7 8 9")
+                            
+                    elif p == 6:
+                        if a[1][2] == 1 or a[1][2] == 7:
+                            print("player or a junk is present")
+                            pro2()
+                        else:
+                            print("Available moves are 3 5 9")
+                            
+                    elif p == 7:
+                        if a[2][0] == 1 or a[2][0] == 7:
+                            print("player or a junk is present")
+                            pro2()
+                        else:
+                            print("Available moves are 4 5 8")
+                            
+                    elif p == 8:
+                        if a[2][1] == 1 or a[2][1] == 7:
+                            print("player or a junk is present")
+                            pro2()
+                        else:
+                            print("Available moves are 7 5 9")
+                            
+                    elif p == 9:
+                        if a[2][2] == 1 or a[2][2] == 7:
+                            print("player or a junk is present")
+                            pro2()
+                        else:
+                            print("Available moves are 6 5 8")
+                    elif p<=0 or p>9:
+                        print("wrong move nigga ")
+                        pro1()
+                    else:
+                        print('wrong move')
+                        old2()
+
+                old2()
+
+                def rgame2():
+
+                    p1 = int(input("PLAYER 2: enter the place to place ur coin (0) "))
+                    if p == 1:
+                        if p1 == 1:
+                            if a[0][0] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[0][0] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[0][0] = 1
+                        elif p1 == 2:
+                            if a[0][1] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[0][1] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[0][1] = 0
+                                a[0][0] = 7
+                        elif p1 == 4:
+                            if a[1][0] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[1][0] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[1][0] = 0
+                                a[0][0] = 7
+                        elif p1 == 5:
+                            if a[1][1] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[1][1] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[1][1] = 0
+                                a[0][0] = 7
+                        else:
+                            print("wrong move")
+                            pro2()
+
+                    elif p == 2:
+                        if p1 == 1:
+                            if a[0][0] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[0][0] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[0][0] = 0
+                                a[0][1] = 7
+                        elif p1 == 2:
+                            if a[0][1] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[0][1] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[0][1] = 0
+                        elif p1 == 3:
+                            if a[0][2] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[0][2] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[0][2] = 0
+                                a[0][1] = 7
+                        elif p1 == 5:
+                            if a[1][1] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[1][1] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[1][1] = 0
+                                a[0][1] = 7
+                        else:
+                            print("wrong move")
+                            pro2()
+
+                    elif p == 3:
+                        if p1 == 2:
+                            if a[0][1] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[0][1] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[0][1] = 0
+                                a[0][2] = 7
+                        elif p1 == 3:
+                            if a[0][2] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[0][2] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[0][2] = 0
+                        elif p1 == 5:
+                            if a[1][1] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[1][1] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[1][1] = 0
+                                a[0][2] = 7
+                        elif p1 == 6:
+                            if a[1][2] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[1][2] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[1][2] = 0
+                                a[0][2] = 7
+                        else:
+                            print("wrong move")
+                            pro2()
+
+                    elif p == 4:
+                        if p1 == 1:
+                            if a[0][0] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[0][0] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[0][0] = 0
+                                a[1][0] = 7
+                        elif p1 == 4:
+                            if a[1][0] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[1][0] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[1][0] = 0
+                        elif p1 == 5:
+                            if a[1][1] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[1][1] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[1][1] = 0
+                                a[1][0] = 7
+                        elif p1 == 7:
+                            if a[2][0] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[2][0] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[2][0] = 0
+                                a[1][0] = 7
+                        else:
+                            print("wrong move")
+                            pro2()
+
+                    elif p == 5:
+                        if p1 == 1:
+                            if a[0][0] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[0][0] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[0][0] = 0
+                                a[1][1] = 7
+                        elif p1 == 2:
+                            if a[0][1] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[0][1] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[0][1] = 0
+                                a[1][1] = 7
+                        elif p1 == 3:
+                            if a[0][2] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[0][2] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[0][2] = 0
+                                a[1][1] = 7
+                        elif p1 == 4:
+                            if a[1][0] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[1][0] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[1][0] = 0
+                                a[1][1] = 7
+                        elif p1 == 5:
+                            if a[1][1] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[1][1] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[1][1] = 0
+                        elif p1 == 6:
+                            if a[1][2] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[1][2] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[1][2] = 0
+                                a[1][1] = 7
+                        elif p1 == 7:
+                            if a[2][0] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[2][0] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[2][0] = 0
+                                a[1][1] = 7
+                        elif p1 == 8:
+                            if a[2][1] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[2][1] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[2][1] = 0
+                                a[1][1] = 7
+                        elif p1 == 9:
+                            if a[2][2] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[2][2] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[2][2] = 0
+                                a[1][1] = 7
+                        else:
+                            print("wrong move")
+                            pro2()
+
+                    elif p == 6:
+                        if p1 == 3:
+                            if a[0][2] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[0][2] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[0][2] = 0
+                                a[1][2] = 7
+                        elif p1 == 5:
+                            if a[1][1] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[1][1] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[1][1] = 0
+                                a[1][2] = 7
+                        elif p1 == 6:
+                            if a[1][2] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[1][2] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[1][2] = 0
+                        elif p1 == 9:
+                            if a[2][2] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[2][2] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[2][2] = 0
+                                a[1][2] = 7
+                        else:
+                            print("wrong move")
+                            pro2()
+
+                    elif p == 7:
+                        if p1 == 4:
+                            if a[1][0] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[1][0] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[1][0] = 0
+                                a[2][0] = 7
+                        elif p1 == 5:
+                            if a[1][1] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[1][1] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[1][1] = 0
+                                a[2][0] = 7
+                        elif p1 == 7:
+                            if a[2][0] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[2][0] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[2][0] = 0
+                        elif p1 == 8:
+                            if a[2][1] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[2][1] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[2][1] = 0
+                                a[2][0] = 7
+                        else:
+                            print("wrong move")
+                            pro2()
+
+                    elif p == 8:
+                        if p1 == 5:
+                            if a[1][1] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[1][1] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[1][1] = 0
+                                a[2][1] = 7
+                        elif p1 == 7:
+                            if a[2][0] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[2][0] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[2][0] = 0
+                                a[2][1] = 7
+                        elif p1 == 8:
+                            if a[2][1] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[2][1] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[2][1] = 0
+                        elif p1 == 9:
+                            if a[2][2] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[2][2] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[2][2] = 0
+                                a[2][1] = 7
+                        else:
+                            print("wrong move")
+                            pro2()
+
+                    elif p == 9:
+                        if p1 == 5:
+                            if a[1][1] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[1][1] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[1][1] = 0
+                                a[2][2] = 7
+                        elif p1 == 6:
+                            if a[1][2] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[1][2] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[1][2] = 0
+                                a[2][2] = 7
+                        elif p1 == 8:
+                            if a[2][1] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[2][1] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[2][1] = 0
+                                a[2][2] = 7
+                        elif p1 == 9:
+                            if a[2][2] == 1:
+                                print("player1 is present")
+                                pro2()
+                            elif a[2][2] == 0:
+                                print("your coin present")
+                                pro2()
+                            else:
+                                a[2][2] = 0
+                        else:
+                            print("wrong move")
+                            pro2()
+
+                    elif p1<=0 or p1>6:
+                        print("wrong move nigga")
+                        pro2()
+                    else:
+                        print(" wrong move")
+                        pro2()
+
+                rgame2()
+
+            while True:
+                pro1()
+                disp()
+                win()                
+                pro2()
+                disp()
+                win()
+
+        def play1():
+
+            p1 = int(input("PLAYER 1: enter the place to place ur coin (1) "))
+
+            if p1 == 1:
+                if a[0][0] == 0:
+                    print("player2 is present")
+                    play1()
+                elif a[0][0] == 1:
+                    print("your coin present")
+                    play1()
+                else:
+                    a[0][0] = 1
+            elif p1 == 2:
+                if a[0][1] == 0:
+                    print("player2 is present")
+                    play1()
+                elif a[0][1] == 1:
+                    print("your coin present")
+                    play1()
+                else:
+                    a[0][1] = 1
+            elif p1 == 3:
+                if a[0][2] == 0:
+                    print("player2 is present")
+                    play1()
+                elif a[0][2] == 1:
+                    print("your coin present")
+                    play1()
+                else:
+                    a[0][2] = 1
+            elif p1 == 4:
+                if a[1][0] == 0:
+                    print("player2 is present")
+                    play1()
+                elif a[1][0] == 1:
+                    print("your coin present")
+                    play1()
+                else:
+                    a[1][0] = 1
+            elif p1 == 5:
+                if a[1][1] == 0:
+                    print("player2 is present")
+                    play1()
+                elif a[1][1] == 1:
+                    print("your coin present")
+                    play1()
+                else:
+                    a[1][1] = 1
+            elif p1 == 6:
+                if a[1][2] == 0:
+                    print("player2 is present")
+                    play1()
+                elif a[1][2] == 1:
+                    print("your coin present")
+                    play1()
+                else:
+                    a[1][2] = 1
+            elif p1 == 7:
+                if a[2][0] == 0:
+                    print("player2 is present")
+                    play1()
+                elif a[2][0] == 1:
+                    print("your coin present")
+                    play1()
+                else:
+                    a[2][0] = 1
+            elif p1 == 8:
+                if a[2][1] == 0:
+                    print("player2 is present")
+                    play1()
+                elif a[2][1] == 1:
+                    print("your coin present")
+                    play1()
+                else:
+                    a[2][1] = 1
+            elif p1 == 9:
+                if a[2][2] == 0:
+                    print("player2 is present")
+                    play1()
+                elif a[2][2] == 1:
+                    print("your coin present")
+                    play1()
+                else:
+                    a[2][2] = 1
+            else:
+                print("Last move was a wrong move")
+                play1()
+
+        # play1()
+
+        # win()
+
+        def play2():
+            p2 = int(input("PLAYER 2: enter the place to place ur coin (0) "))
+
+            if p2 == 1:
+                if a[0][0] == 1:
+                    print("Player 1 is present")
+                    play2()
+                elif a[0][0] == 0:
+                    print("your coin present")
+                    play2()
+                else:
+                    a[0][0] = 0
+            elif p2 == 2:
+                if a[0][1] == 1:
+                    print("Player 1 is present")
+                    play2()
+                elif a[0][1] == 0:
+                    print("your coin present")
+                    play2()
+                else:
+                    a[0][1] = 0
+            elif p2 == 3:
+                if a[0][2] == 1:
+                    print("Player 1 is present")
+                    play2()
+                elif a[0][2] == 0:
+                    print("your coin present")
+                    play2()
+                else:
+                    a[0][2] = 0
+            elif p2 == 4:
+                if a[1][0] == 1:
+                    print("Player 1 is present")
+                    play2()
+                elif a[1][0] == 0:
+                    print("your coin present")
+                    play2()
+                else:
+                    a[1][0] = 0
+            elif p2 == 5:
+                if a[1][1] == 1:
+                    print("Player 1 is present")
+                    play2()
+                elif a[1][1] == 0:
+                    print("your coin present")
+                    play2()
+                else:
+                    a[1][1] = 0
+            elif p2 == 6:
+                if a[1][2] == 1:
+                    print("Player 1 is present")
+                    play2()
+                elif a[1][2] == 0:
+                    print("your coin present")
+                    play2()
+                else:
+                    a[1][2] = 0
+            elif p2 == 7:
+                if a[2][0] == 1:
+                    print("Player 1 is present")
+                    play2()
+                elif a[2][0] == 0:
+                    print("your coin present")
+                    play2()
+                else:
+                    a[2][0] = 0
+            elif p2 == 8:
+                if a[2][1] == 1:
+                    print("Player 1 is present")
+                    play2()
+                elif a[2][1] == 0:
+                    print("your coin present")
+                    play2()
+                else:
+                    a[2][1] = 0
+            elif p2 == 9:
+                if a[2][2] == 1:
+                    print("Player 1 is present")
+                    play2()
+                elif a[2][2] == 0:
+                    print("your coin present")
+                    play2()
+                else:
+                    a[2][2] = 0
+            else:
+                print("wrong move")
+                play2()
+
+        play1()
+        disp()
+        win()
+        play2()
+        disp()
+        win()
+        # for i in a:
+        # print(i)
+        # play2()
+
+        i = i + 1
+
+
+while True:
+    set()
+
+
+
+
+
+
+
+
+
+
+
